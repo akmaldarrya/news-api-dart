@@ -45,7 +45,9 @@ class _PostsPageState extends State<PostsPage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blueAccent,
+        selectedItemColor: Colors.orange, // Warna oranye untuk elemen terpilih
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.black, // Background bottom navigation menjadi gelap
         onTap: _onItemTapped,
       ),
     );
@@ -67,19 +69,14 @@ class PostsPageBody extends StatelessWidget {
             fontSize: 24,
             fontWeight: FontWeight.bold,
             letterSpacing: 2.0,
+            color: Colors.orange, // Warna oranye untuk logo
           ),
         ),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.grey[850], // Warna abu-abu untuk AppBar
         elevation: 0,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue[50]!, Colors.blue[200]!],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
+        color: Colors.black, // Warna hitam pekat untuk body
         child: FutureBuilder<ApiResponse>(
           future: httpService.getPosts(),
           builder: (BuildContext context, AsyncSnapshot<ApiResponse> snapshot) {
@@ -150,7 +147,7 @@ class BookCard extends StatelessWidget {
               child: Image.network(
                 coverUrl,
                 fit: BoxFit.cover,
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.2), // Efek gelap lebih ringan pada gambar
                 colorBlendMode: BlendMode.darken,
               ),
             ),
